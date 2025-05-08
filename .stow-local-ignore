@@ -1,0 +1,9 @@
+\.git
+\.gitattributes
+\.gitignore
+\.gitmodules
+\.git-crypt
+
+^/README.*
+^/LICENSE.*
+
