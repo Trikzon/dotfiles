@@ -1,0 +1,96 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 24,
+    "margin": 0,
+    "spacing": 4,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock#time",
+	"clock#date"
+    ],
+    "modules-right": [
+        "tray",
+        "privacy",
+        "cpu",
+	"custom/gpu",
+        "memory",
+        "network",
+	"pulseaudio"
+    ],
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 10
+        },
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+        }
+    },
+    "clock#time": {
+        "format": "{:%H:%M}",
+	"tooltip": false
+    },
+    "clock#date": {
+        "format": "{:%a, %d %b %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos"     : "left",
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click": "shift_up",
+            "on-click-right": "shift_down"
+        }
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 4
+    },
+    "privacy": {
+        "icon-size": 16
+    },
+    "cpu": {
+        "format": "cpu {usage}%",
+	"interval": 1
+    },
+    "memory": {
+        "format": "mem {percentage}%",
+	"interval": 1
+    },
+    "network": {
+        "format": "net {bandwidthDownBits}",
+	"interval": 1
+    },
+    "pulseaudio": {
+        "format": "vol {volume}%",
+        "on-click": "pavucontrol"
+    },
+    "custom/gpu": {
+        "exec": "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent",
+	"name": "custom-gpu",
+        "format": "gpu {}%",
+        "return-type": "",
+        "interval": 1
+    }
+}
+
