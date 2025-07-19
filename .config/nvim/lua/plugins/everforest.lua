@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("everforest").setup({
 			background = "hard",
-			transparent_background_level = 2,
+			transparent_background_level = 1,
 			italics = true,
 			disable_italic_comments = false,
 			sign_column_background = "none",
@@ -19,7 +19,12 @@ return {
 			show_eob = true,
 			float_style = "bright",
 			inlay_hints_background = "none",
-			on_highlights = function(highlight_groups, palette) end,
+			on_highlights = function(hl, palette)
+				-- Add red background to highlighted text under cursor
+				hl.LspReferenceText = { bg = palette.bg_red }
+				hl.LspReferenceRead = { bg = palette.bg_red }
+				hl.LspReferenceWrite = { bg = palette.bg_red }
+			end,
 			colours_override = function(palette) end,
 		})
 

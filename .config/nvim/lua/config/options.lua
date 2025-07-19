@@ -26,8 +26,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 -- always show the sign column
 vim.opt.signcolumn = "yes"
--- disable command line unless used
-vim.opt.cmdheight = 0
 
 -- highlight current line
 vim.opt.cursorline = true
@@ -62,4 +60,7 @@ vim.opt.splitbelow = true
 
 -- always keep at least ten lines above and below the cursor
 vim.opt.scrolloff = 10
+
+-- increase update time
+vim.opt.updatetime = 500
 
