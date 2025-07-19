@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("everforest").setup({
 			background = "hard",
-			transparent_background_level = 1,
+			transparent_background_level = 2,
 			italics = true,
 			disable_italic_comments = false,
 			sign_column_background = "none",
