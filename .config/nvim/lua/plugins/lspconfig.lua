@@ -101,6 +101,7 @@ return {
 					},
 				},
 				emmet_language_server = { },
+				svelte = { },
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})

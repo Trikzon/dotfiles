@@ -4,7 +4,12 @@ return {
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
+				"css",
+				"html",
+				"javascript",
 				"lua",
+				"svelte",
+				"typescript",
 			},
 			sync_install = false,
 			highlight = { enable = true },
