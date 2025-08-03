@@ -105,7 +105,7 @@ return {
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, { "stylua" })
+			vim.list_extend(ensure_installed, { "stylua", "tree-sitter-cli" })
 			require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
 			require("mason-lspconfig").setup {
