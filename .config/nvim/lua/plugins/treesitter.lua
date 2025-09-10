@@ -14,7 +14,12 @@ return {
 				"typescript",
 			},
 			sync_install = false,
-			highlight = { enable = true },
+			highlight = {
+				enable = true,
+				disable = {
+					"latex",
+				},
+			},
 			indent = { enable = true },
 			incremental_selection = {
 				enable = true,
