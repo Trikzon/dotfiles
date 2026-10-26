@@ -3,8 +3,6 @@
   # Manage connections with nmcli / nmtui.
   networking.networkmanager.enable = true;
 
-  # On by default; kept explicit. Modules open their own ports (openssh opens 22).
+  # On by default; kept explicit. Services can open their own ports when needed.
   networking.firewall.enable = true;
-
-  services.openssh.enable = true;
 }
