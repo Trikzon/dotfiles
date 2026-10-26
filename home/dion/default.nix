@@ -1,10 +1,17 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./git.nix
     ./librewolf.nix
   ];
 
   home.packages = with pkgs; [
+    mpv
     tree
     unstable.claude-code
     # Discord refuses to start when outdated, so take it from unstable.
@@ -17,6 +24,31 @@
   };
 
   services.mako.enable = true;
+
+  # Without these, xdg-open picks whichever installed app lists the type first.
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications =
+      lib.genAttrs [
+        "video/mp4"
+        "video/webm"
+        "video/x-matroska"
+        "audio/flac"
+        "audio/mpeg"
+        "audio/ogg"
+      ] (_: "mpv.desktop")
+      // lib.genAttrs [
+        "text/html"
+        "application/xhtml+xml"
+        "application/pdf"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+      ] (_: "librewolf.desktop")
+      // {
+        # Claude Code registered this itself; Home Manager now owns the file.
+        "x-scheme-handler/claude-cli" = "claude-code-url-handler.desktop";
+      };
+  };
 
   home.file."Storage".source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage";
 
