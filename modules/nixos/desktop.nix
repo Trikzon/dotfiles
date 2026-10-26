@@ -12,8 +12,6 @@
 
   services.printing.enable = true;
 
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
     # TODO: move to Home Manager.
     alacritty
