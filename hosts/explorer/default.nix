@@ -4,6 +4,7 @@
     ../../modules/nixos/base.nix
     ../../modules/nixos/boot.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/home-manager.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/nix.nix
     ../../users/dion.nix

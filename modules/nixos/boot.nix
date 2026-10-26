@@ -1,3 +1,5 @@
+# Boot loader, kernel, and boot splash.
+# Machine-specific boot settings (LUKS, resume, amdgpu initrd) live in hosts/<name>/.
 { pkgs, ... }: {
   boot = {
     loader = {
