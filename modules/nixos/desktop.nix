@@ -14,9 +14,11 @@
 
   programs.firefox.enable = true;
 
-  # TODO: move to Home Manager.
   environment.systemPackages = with pkgs; [
+    # TODO: move to Home Manager.
     alacritty
     fuzzel
+    # niri spawns this on demand to run X11 apps.
+    xwayland-satellite
   ];
 }
