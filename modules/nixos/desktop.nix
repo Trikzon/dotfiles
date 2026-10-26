@@ -1,0 +1,22 @@
+# Graphical session: niri on Wayland, audio, printing, and desktop apps.
+{ pkgs, ... }: {
+  # Also pulls in gnome-keyring, gcr-ssh-agent (the SSH agent), and
+  # pinentry-gnome3 via services.graphical-desktop.
+  programs.niri.enable = true;
+  hardware.graphics.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
+
+  services.printing.enable = true;
+
+  programs.firefox.enable = true;
+
+  # TODO: move to Home Manager.
+  environment.systemPackages = with pkgs; [
+    alacritty
+    fuzzel
+  ];
+}
