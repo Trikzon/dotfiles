@@ -3,6 +3,7 @@
 
   home.packages = with pkgs; [
     tree
+    unstable.claude-code
   ];
 
   home.file."Storage".source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage";

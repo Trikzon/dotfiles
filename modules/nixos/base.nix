@@ -9,9 +9,6 @@
     git
     vim
     wget
-
-    # TODO: move to per-project dev shells.
-    nodejs_22
   ];
 
   programs.gnupg.agent.enable = true;
