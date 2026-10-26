@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "hd60s": {
+      "locked": {
+        "lastModified": 1793055450,
+        "narHash": "sha256-fCZad0n/INEYkw6C+tCw7/fU7qXBpst/6HCoCZbha4E=",
+        "owner": "Trikzon",
+        "repo": "hd60s-linux-driver",
+        "rev": "d5b14ee320825d022d579dab08db8c81dd066c5a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Trikzon",
+        "repo": "hd60s-linux-driver",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -55,6 +70,7 @@
     },
     "root": {
       "inputs": {
+        "hd60s": "hd60s",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
