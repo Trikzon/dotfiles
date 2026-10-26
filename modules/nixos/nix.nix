@@ -7,7 +7,13 @@
 
   nixpkgs = {
     # Unfree packages allowed by name, instead of allowing all of them.
-    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" ];
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "claude-code"
+        "discord"
+        "discord-unwrapped"
+      ];
 
     overlays = [
       # pkgs.unstable.<name> gives packages from nixos-unstable; everything
