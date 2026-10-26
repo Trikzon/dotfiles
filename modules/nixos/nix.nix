@@ -13,6 +13,9 @@
         "claude-code"
         "discord"
         "discord-unwrapped"
+        "steam"
+        "steam-unwrapped"
+        "steam-run"
       ];
 
     overlays = [

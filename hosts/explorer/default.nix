@@ -8,6 +8,7 @@
     ../../modules/nixos/home-manager.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/nix.nix
+    ../../modules/nixos/steam.nix
     ../../users/dion.nix
   ];
 
