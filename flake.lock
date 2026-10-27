@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793119972,
-        "narHash": "sha256-EevSubwHnwKyfYHp8FExFxJfGwNIIfRAONF0htjUDDE=",
+        "lastModified": 1793126121,
+        "narHash": "sha256-mVJI9YlLqWu8uUlvvL97vYC40aGr5p/1mfVR8ABigbo=",
         "ref": "main",
-        "rev": "eac2e028110f5d9b2c2ea3c12c2a4565c417b304",
-        "revCount": 984,
+        "rev": "fcf5023ab467acc9b8b5da10d0ae2a9d3314fc22",
+        "revCount": 993,
         "type": "git",
         "url": "ssh://git@github.com/Trikzon/dashboard"
       },
@@ -89,11 +89,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1792898606,
-        "narHash": "sha256-Mg3rRjsbMqhSMxop5PYMXos8SwAjejrxSgVThTvP9eg=",
+        "lastModified": 1793015021,
+        "narHash": "sha256-Ee5BWo8sh3pGt70QUdRajnaginqFmWvrtdBc4gJzhks=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1f607aa79b6356ed45d3cd3c8079c196e79efa2c",
+        "rev": "718f670e845328e9c2cecdd832835712b2cbd065",
         "type": "github"
       },
       "original": {
