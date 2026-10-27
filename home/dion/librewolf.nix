@@ -48,14 +48,13 @@ in
         # 1 is compact, 0 is normal.
         "browser.uidensity" = defaultPref 1;
 
+        # 3 restores the previous windows and tabs; Firefox's default is 1 (home page).
+        "browser.startup.page" = defaultPref 3;
+
         # LibreWolf turns these off. The CDMs are separate downloads, see
         # media.gmp-manager.updateEnabled in LibreWolf's mozilla.cfg.
         "media.gmp-widevinecdm.enabled" = defaultPref true;
         "media.gmp-gmpopenh264.enabled" = defaultPref true;
-
-        # LibreWolf's resistFingerprinting makes every site see a light theme.
-        # Drop only that target so prefers-color-scheme follows the system.
-        "privacy.fingerprintingProtection.overrides" = defaultPref "-CSSPrefersColorScheme";
       }
       // lib.genAttrs (map (name: "browser.urlbar.suggest.${name}") urlbarSuggestions) (
         _: defaultPref false
@@ -74,13 +73,6 @@ in
         Locked = false;
       };
 
-      # LibreWolf clears cookies on exit by default, which signs you out of
-      # sites. The Preferences policy can't set the clearOnShutdown prefs.
-      SanitizeOnShutdown = {
-        Cookies = false;
-        Locked = false;
-      };
-
       # nixpkgs has no Bitwarden browser extension package, so install it from
       # addons.mozilla.org via policy. normal_installed lets the user disable it.
       ExtensionSettings."{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
@@ -96,6 +88,16 @@ in
       };
     };
   };
+
+  # LibreWolf's resistFingerprinting makes every site see a light theme, and it
+  # ignores per-target overrides, so swap it for fingerprintingProtection with
+  # every target except the color scheme. The Preferences policy can't set
+  # resistFingerprinting, so use LibreWolf's own overrides file.
+  xdg.configFile."librewolf/librewolf/librewolf.overrides.cfg".text = ''
+    defaultPref("privacy.resistFingerprinting", false);
+    defaultPref("privacy.fingerprintingProtection", true);
+    defaultPref("privacy.fingerprintingProtection.overrides", "+AllTargets,-CSSPrefersColorScheme");
+  '';
 
   # Home Manager hardcodes ~/.librewolf for this file, which LibreWolf doesn't
   # read here; it is empty, so don't create the directory.
