@@ -74,7 +74,12 @@
   xdg.configFile."niri/config.kdl".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/dion/niri/config.kdl";
 
-  home.file."Storage".source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage";
+  home.file = {
+    "Storage".source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage";
+  }
+  // lib.genAttrs [ "Applications" "Documents" "Music" "Pictures" "Videos" ] (name: {
+    source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage/${name}";
+  });
 
   # Home Manager's equivalent of system.stateVersion. Never change it.
   home.stateVersion = "26.05";
