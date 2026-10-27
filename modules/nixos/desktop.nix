@@ -18,8 +18,6 @@
   services.power-profiles-daemon.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # TODO: move to Home Manager.
-    alacritty
     # niri spawns this on demand to run X11 apps.
     xwayland-satellite
   ];

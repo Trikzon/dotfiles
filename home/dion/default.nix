@@ -10,6 +10,14 @@
     ./librewolf.nix
   ];
 
+  programs.kitty.enable = true;
+
+  # Home Manager passes kitty `shell_integration no-rc`, so the shell must
+  # source the integration from a Home Manager-written .bashrc. Without it
+  # kitty can't tell an idle prompt from a running command and always asks
+  # before closing.
+  programs.bash.enable = true;
+
   home.packages = with pkgs; [
     mpv
     tree
