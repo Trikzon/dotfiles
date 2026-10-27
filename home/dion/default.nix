@@ -18,6 +18,9 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    # Pre-approves every .envrc under the project, so new worktrees don't each
+    # need `direnv allow`.
+    config.whitelist.prefix = [ "/home/dion/Projects/dashboard" ];
   };
 
   programs.gh.enable = true;
