@@ -12,4 +12,7 @@
   ];
 
   programs.gnupg.agent.enable = true;
+
+  # Also links /share/zsh so completions for system packages are found.
+  programs.zsh.enable = true;
 }
