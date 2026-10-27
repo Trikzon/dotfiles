@@ -16,7 +16,7 @@ nix store diff-closures /run/current-system ./result
 read -r -p "Apply? [y/N] " answer
 if [ "$answer" = y ] || [ "$answer" = Y ]; then
   nixos-rebuild switch --flake . --sudo
-  echo "Applied. Commit the new lock file: git commit -am 'chore: update flake inputs'"
+  git commit flake.lock -m "chore: update flake inputs"
 else
   git checkout flake.lock
   echo "Discarded the flake.lock update."
