@@ -1,7 +1,6 @@
 # TODO
 
-- [ ] Move alacritty, fuzzel, and niri's config into Home Manager
-  - Use `mkOutOfStoreSymlink` for configs that are edited often (niri)
+- [ ] Move alacritty's config into Home Manager
 - [ ] Add Windows to the systemd-boot menu (its ESP is on the Windows disk, UUID `8451-BA5A`)
   - Afterwards, optionally hide the menu: `boot.loader.timeout = 0;`
 - [ ] Encrypt the storage drive with LUKS

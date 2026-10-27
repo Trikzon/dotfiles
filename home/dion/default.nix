@@ -61,6 +61,11 @@
     x11.enable = true;
   };
 
+  # Symlinked to the working tree instead of copied into the Nix store, so
+  # edits to config.kdl apply (niri live-reloads) without a rebuild.
+  xdg.configFile."niri/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/dion/niri/config.kdl";
+
   home.file."Storage".source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage";
 
   # Home Manager's equivalent of system.stateVersion. Never change it.
