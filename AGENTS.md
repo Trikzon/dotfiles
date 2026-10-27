@@ -25,6 +25,41 @@ NixOS: the goal is a clean, understandable config, not just a working one.
 
 New files must be `git add`ed before evaluating; flakes only see tracked files.
 
+## Project dev environments
+
+Per-project tooling (Node, pnpm, ...) is not installed system-wide. Each
+project gets a flake dev shell, loaded by direnv (`programs.direnv` with
+`nix-direnv` in `home/dion/default.nix`).
+
+- Projects are cloned bare: `<project>/.bare`, a `.git` file containing
+  `gitdir: ./.bare`, and one worktree directory per branch beside it.
+- The flake lives outside the project, in `~/dev-envs/<project>/`, so nothing
+  is staged or committed upstream. Flakes only see git-tracked files, which is
+  why an untracked `flake.nix` inside the project doesn't work.
+- `<project>/.envrc` (in the container, not in a worktree) is
+  `use flake ~/dev-envs/<project>`. direnv searches parent directories, so it
+  covers every present and future worktree after one `direnv allow`.
+- Rejected: `path:.` (copies worktrees and `node_modules` into the store), a
+  flake in `.bare` (needs `path:` or removing the `.git` file, and copies the
+  whole git dir), `git add -N` plus `assume-unchanged` (fragile).
+- pnpm: `npm_config_manage_package_manager_versions=false` is set in the shell,
+  because pnpm otherwise downloads the version pinned in `package.json`, which
+  NixOS can't run. nixpkgs' `pnpm_12` may be older than the pinned version.
+- Prisma has no prebuilt engine for NixOS and fails with a 404 for
+  `linux-nixos`. Put `unstable.prisma-engines` in the dev shell: its setup hook
+  sets `PRISMA_SCHEMA_ENGINE_BINARY`. Match its version to the project's
+  `prisma` version. `prisma generate` is not run by `pnpm install`; the
+  generated client is gitignored, so run it once per worktree.
+- The Supabase CLI from npm is a generic-linux binary, so it needs `nix-ld`
+  (`modules/nixos/nix-ld.nix`); a Nix-packaged copy wouldn't help because
+  `pnpm run` puts `node_modules/.bin` first. It needs Docker
+  (`modules/nixos/docker.nix`, user in the `docker` group).
+- Worktrees share Docker images but each gets its own Supabase containers and
+  volumes (named after the directory). Host ports are fixed, so stop one
+  worktree's stack (`supabase stop`) before starting another's.
+- `~/dev-envs/` is deliberately kept out of this repo (the owner's decision)
+  and is not backed up.
+
 ## Research before acting
 
 - Don't rely on memory for option names, defaults, or behavior. They change
