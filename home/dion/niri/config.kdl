@@ -11,6 +11,22 @@ input {
     }
 }
 
+// Ask windows to drop their client-side titlebars; niri draws the border.
+prefer-no-csd
+
+layout {
+    gaps 8
+    // The focus ring only outlines the active window; the border outlines all
+    // of them, so it replaces the ring to give unfocused windows an outline.
+    focus-ring {
+        off
+    }
+    border {
+        on
+        width 2
+    }
+}
+
 spawn-at-startup "noctalia"
 
 window-rule {
@@ -139,3 +155,5 @@ binds {
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }
 }
+
+include "noctalia.kdl"
