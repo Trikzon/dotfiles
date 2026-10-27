@@ -52,6 +52,10 @@ in
         # media.gmp-manager.updateEnabled in LibreWolf's mozilla.cfg.
         "media.gmp-widevinecdm.enabled" = defaultPref true;
         "media.gmp-gmpopenh264.enabled" = defaultPref true;
+
+        # LibreWolf's resistFingerprinting makes every site see a light theme.
+        # Drop only that target so prefers-color-scheme follows the system.
+        "privacy.fingerprintingProtection.overrides" = defaultPref "-CSSPrefersColorScheme";
       }
       // lib.genAttrs (map (name: "browser.urlbar.suggest.${name}") urlbarSuggestions) (
         _: defaultPref false
@@ -82,6 +86,12 @@ in
       ExtensionSettings."{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
         installation_mode = "normal_installed";
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+        default_area = "navbar";
+      };
+
+      ExtensionSettings."addon@darkreader.org" = {
+        installation_mode = "normal_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
         default_area = "navbar";
       };
     };
