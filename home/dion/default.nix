@@ -13,6 +13,13 @@
 
   programs.kitty.enable = true;
 
+  # Loads a project's flake dev shell when entering its directory. nix-direnv
+  # caches it so entering is fast and `nix-collect-garbage` keeps it.
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
     mpv
     tree
