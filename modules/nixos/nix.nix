@@ -19,6 +19,11 @@
       ];
 
     overlays = [
+      # pkgs.dashboard is the private dashboard app, built from its release branch.
+      (final: prev: {
+        dashboard = inputs.dashboard.packages.${final.stdenv.hostPlatform.system}.default;
+      })
+
       # pkgs.unstable.<name> gives packages from nixos-unstable; everything
       # else stays on 26.05. Shares this nixpkgs config (unfree list included).
       (final: prev: {

@@ -5,6 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Private repo, so it is fetched over SSH. `main` is its release branch, so
+    # `nix flake update dashboard` moves to the latest release. No `follows`: it
+    # needs Electron 44 and pnpm 11 from unstable.
+    dashboard.url = "git+ssh://git@github.com/Trikzon/dashboard?ref=main";
+
     # Fork of the HD60 S driver; it ships its own NixOS module.
     hd60s.url = "github:Trikzon/hd60s-linux-driver";
 

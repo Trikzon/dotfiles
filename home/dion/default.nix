@@ -23,6 +23,7 @@
   programs.gh.enable = true;
 
   home.packages = with pkgs; [
+    dashboard
     mpv
     tree
     unstable.claude-code
