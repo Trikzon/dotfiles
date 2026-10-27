@@ -4,10 +4,12 @@
     ../../modules/nixos/base.nix
     ../../modules/nixos/boot.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/docker.nix
     ../../modules/nixos/greeter.nix
     ../../modules/nixos/hd60s.nix
     ../../modules/nixos/home-manager.nix
     ../../modules/nixos/network.nix
+    ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/nix.nix
     ../../modules/nixos/steam.nix
     ../../users/dion.nix
