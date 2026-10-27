@@ -25,6 +25,7 @@
   home.packages = with pkgs; [
     dashboard
     mpv
+    prismlauncher
     tree
     unstable.claude-code
     # Discord refuses to start when outdated, so take it from unstable.
