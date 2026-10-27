@@ -12,10 +12,14 @@
 
   services.printing.enable = true;
 
+  # Noctalia's bluetooth and power-profile features talk to these. upower is
+  # left out: it only serves battery status, and this machine has no battery.
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
+
   environment.systemPackages = with pkgs; [
     # TODO: move to Home Manager.
     alacritty
-    fuzzel
     # niri spawns this on demand to run X11 apps.
     xwayland-satellite
   ];

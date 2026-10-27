@@ -16,14 +16,15 @@
     unstable.claude-code
     # Discord refuses to start when outdated, so take it from unstable.
     unstable.discord
+    # Launcher, bar, and notifications (replaces fuzzel and mako). 26.05 only
+    # has 5.0.1, so take it from unstable.
+    unstable.noctalia
   ];
 
   # Nix can't apply Discord's self-updates, so stop it from asking for them.
   xdg.configFile."discord/settings.json".text = builtins.toJSON {
     SKIP_HOST_UPDATE = true;
   };
-
-  services.mako.enable = true;
 
   # Without these, xdg-open picks whichever installed app lists the type first.
   xdg.mimeApps = {
