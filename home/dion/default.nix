@@ -51,6 +51,16 @@
       };
   };
 
+  # No cursor theme is installed by default, so niri falls back to a large
+  # static arrow without hover states.
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   home.file."Storage".source = config.lib.file.mkOutOfStoreSymlink "/mnt/storage";
 
   # Home Manager's equivalent of system.stateVersion. Never change it.
