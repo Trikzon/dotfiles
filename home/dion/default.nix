@@ -41,6 +41,17 @@
       runtimeInputs = [ git ];
       text = builtins.readFile ./scripts/clone-bare.sh;
     })
+    # Updates flake inputs, shows what changed, and switches after confirmation.
+    # nixos-rebuild and sudo come from the system, since sudo must be the setuid
+    # wrapper rather than a store copy.
+    (writeShellApplication {
+      name = "nixos-upgrade";
+      runtimeInputs = [
+        git
+        nix
+      ];
+      text = builtins.readFile ./scripts/nixos-upgrade.sh;
+    })
   ];
 
   # Nix can't apply Discord's self-updates, so stop it from asking for them.
