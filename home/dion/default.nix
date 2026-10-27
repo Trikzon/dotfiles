@@ -20,6 +20,8 @@
     nix-direnv.enable = true;
   };
 
+  programs.gh.enable = true;
+
   home.packages = with pkgs; [
     mpv
     tree
@@ -29,6 +31,8 @@
     # Launcher, bar, and notifications (replaces fuzzel and mako). 26.05 only
     # has 5.0.1, so take it from unstable.
     unstable.noctalia
+    # Clipboard CLI (wl-copy/wl-paste) that terminal tools look for on Wayland.
+    wl-clipboard
   ];
 
   # Nix can't apply Discord's self-updates, so stop it from asking for them.
