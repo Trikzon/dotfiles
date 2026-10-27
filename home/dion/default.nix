@@ -35,6 +35,12 @@
     unstable.noctalia
     # Clipboard CLI (wl-copy/wl-paste) that terminal tools look for on Wayland.
     wl-clipboard
+    # Sets up the bare-clone-plus-worktrees layout described in AGENTS.md.
+    (writeShellApplication {
+      name = "clone-bare";
+      runtimeInputs = [ git ];
+      text = builtins.readFile ./scripts/clone-bare.sh;
+    })
   ];
 
   # Nix can't apply Discord's self-updates, so stop it from asking for them.
