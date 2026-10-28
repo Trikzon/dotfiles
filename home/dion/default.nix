@@ -25,6 +25,24 @@
 
   programs.gh.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    settings = {
+      devices.Thor.id = "7255NBD-MNUGNGO-GERV4NE-NE26IRK-J26RUIS-HSU3J6X-YYIP545-3M4EAQO";
+      # Real paths: ~/Documents is a symlink and Syncthing dislikes symlinked roots.
+      folders = {
+        "/mnt/storage/Documents/Emulation/Configs" = {
+          id = "emulation-configs";
+          devices = [ "Thor" ];
+        };
+        "/mnt/storage/Documents/Emulation/Games" = {
+          id = "emulation-games";
+          devices = [ "Thor" ];
+        };
+      };
+    };
+  };
+
   home.packages = with pkgs; [
     dashboard
     mpv

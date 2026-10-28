@@ -12,6 +12,7 @@
     ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/nix.nix
     ../../modules/nixos/steam.nix
+    ../../modules/nixos/syncthing.nix
     ../../users/dion.nix
   ];
 
