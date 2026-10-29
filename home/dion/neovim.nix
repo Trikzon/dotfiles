@@ -115,6 +115,11 @@
       }
     ];
 
+    # Maps file names to schemas for jsonls and yamlls (package.json, GitHub
+    # workflows, ...). Only the catalog is bundled: the servers still download
+    # the schemas themselves, so validation needs network access.
+    plugins.schemastore.enable = true;
+
     # Starts rust-analyzer itself and adds :RustLsp commands, so rust_analyzer
     # must not also be enabled in lsp.servers.
     plugins.rustaceanvim.enable = true;
