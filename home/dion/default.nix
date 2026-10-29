@@ -56,6 +56,7 @@
     dashboard
     mpv
     prismlauncher
+    _7zz
     tree
     unstable.claude-code
     # Discord refuses to start when outdated, so take it from unstable.
