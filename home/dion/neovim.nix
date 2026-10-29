@@ -43,6 +43,12 @@
       };
     };
 
+    # Default configs (command, file types, root markers) for language servers.
+    plugins.lspconfig.enable = true;
+
+    # Adds about 650 MiB to the closure, mostly LLVM.
+    lsp.servers.nixd.enable = true;
+
     # File icons for Telescope; enabling it automatically is deprecated.
     plugins.web-devicons.enable = true;
 
