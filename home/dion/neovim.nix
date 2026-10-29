@@ -1,5 +1,5 @@
 # Neovim, configured through NixVim.
-{ ... }: {
+{ pkgs, ... }: {
   programs.nixvim = {
     enable = true;
     # Sets EDITOR and VISUAL to nvim in the session environment.
@@ -32,5 +32,25 @@
       enable = true;
       highlight.enable = true;
     };
+
+    plugins.telescope = {
+      enable = true;
+      keymaps = {
+        "<leader>ff" = "find_files";
+        "<leader>fg" = "live_grep";
+        "<leader>fb" = "buffers";
+        "<leader>fh" = "help_tags";
+      };
+    };
+
+    # File icons for Telescope; enabling it automatically is deprecated.
+    plugins.web-devicons.enable = true;
+
+    # Telescope shells out to these; extraPackages puts them on nvim's PATH
+    # only, so they aren't installed system-wide.
+    extraPackages = with pkgs; [
+      ripgrep
+      fd
+    ];
   };
 }
