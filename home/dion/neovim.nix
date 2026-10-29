@@ -83,6 +83,38 @@
     # Completion menu: <C-n>/<C-p> select, <C-y> accepts (blink's default keymap).
     plugins.blink-cmp.enable = true;
 
+    plugins.conform-nvim = {
+      enable = true;
+      settings = {
+        # nixfmt matches `nix fmt`. ruff is already on PATH as the LSP's
+        # fallback, so a project's own ruff takes precedence.
+        formatters_by_ft = {
+          nix = [ "nixfmt" ];
+          sh = [ "shfmt" ];
+          python = [
+            "ruff_format"
+            "ruff_organize_imports"
+          ];
+        };
+        # "never" restricts saving to the formatters above, so language servers
+        # don't reformat other projects' files in a style they don't use.
+        format_on_save = {
+          timeout_ms = 500;
+          lsp_format = "never";
+        };
+      };
+    };
+
+    # Formats on request through the language server where no formatter is set.
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>cf";
+        action.__raw = "function() require('conform').format({ lsp_format = 'fallback' }) end";
+        options.desc = "Format buffer";
+      }
+    ];
+
     # Starts rust-analyzer itself and adds :RustLsp commands, so rust_analyzer
     # must not also be enabled in lsp.servers.
     plugins.rustaceanvim.enable = true;
@@ -100,11 +132,14 @@
     # File icons for Telescope; enabling it automatically is deprecated.
     plugins.web-devicons.enable = true;
 
-    # Telescope shells out to these; extraPackages puts them on nvim's PATH
-    # only, so they aren't installed system-wide.
+    # Tools nvim shells out to; extraPackages puts them on nvim's PATH only, so
+    # they aren't installed system-wide. ripgrep and fd are for Telescope,
+    # nixfmt and shfmt for conform.
     extraPackages = with pkgs; [
       ripgrep
       fd
+      nixfmt
+      shfmt
     ];
   };
 }
