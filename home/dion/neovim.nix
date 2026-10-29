@@ -144,6 +144,11 @@
       };
     };
 
+    plugins.gitsigns.enable = true;
+    # git is already installed by Home Manager (git.nix); without this, nvim
+    # would put a second copy first on its PATH.
+    dependencies.git.enable = false;
+
     # File icons for Telescope; enabling it automatically is deprecated.
     plugins.web-devicons.enable = true;
 
