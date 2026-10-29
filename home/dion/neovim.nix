@@ -46,8 +46,25 @@
     # Default configs (command, file types, root markers) for language servers.
     plugins.lspconfig.enable = true;
 
-    # Adds about 650 MiB to the closure, mostly LLVM.
-    lsp.servers.nixd.enable = true;
+    lsp.servers = {
+      # Adds about 650 MiB to the closure, mostly LLVM.
+      nixd.enable = true;
+      bashls.enable = true;
+      jsonls.enable = true;
+      yamlls.enable = true;
+      tombi.enable = true;
+      # Covers Dockerfile, Compose, and Bake files in one server.
+      docker_language_server.enable = true;
+    };
+
+    # Neovim detects Compose files as plain yaml, but docker_language_server
+    # only attaches to yaml.docker-compose.
+    filetype.filename = {
+      "compose.yaml" = "yaml.docker-compose";
+      "compose.yml" = "yaml.docker-compose";
+      "docker-compose.yaml" = "yaml.docker-compose";
+      "docker-compose.yml" = "yaml.docker-compose";
+    };
 
     # File icons for Telescope; enabling it automatically is deprecated.
     plugins.web-devicons.enable = true;
