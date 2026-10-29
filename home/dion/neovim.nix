@@ -80,6 +80,9 @@
       };
     };
 
+    # Completion menu: <C-n>/<C-p> select, <C-y> accepts (blink's default keymap).
+    plugins.blink-cmp.enable = true;
+
     # Starts rust-analyzer itself and adds :RustLsp commands, so rust_analyzer
     # must not also be enabled in lsp.servers.
     plugins.rustaceanvim.enable = true;
