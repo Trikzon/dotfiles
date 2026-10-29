@@ -25,5 +25,12 @@
 
     # Shares the clipboard with Wayland through wl-clipboard.
     clipboard.register = "unnamedplus";
+
+    # Installs every grammar from Nix (about 250 MiB), so no language needs
+    # adding by hand and nothing compiles at runtime.
+    plugins.treesitter = {
+      enable = true;
+      highlight.enable = true;
+    };
   };
 }
