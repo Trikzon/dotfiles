@@ -55,6 +55,25 @@
       tombi.enable = true;
       # Covers Dockerfile, Compose, and Bake files in one server.
       docker_language_server.enable = true;
+
+      # Tied to a project's toolchain, so a version from the project's dev shell
+      # takes precedence over these (packageFallback puts them last on PATH).
+      basedpyright = {
+        enable = true;
+        packageFallback = true;
+      };
+      ruff = {
+        enable = true;
+        packageFallback = true;
+      };
+      vtsls = {
+        enable = true;
+        packageFallback = true;
+      };
+      ols = {
+        enable = true;
+        packageFallback = true;
+      };
     };
 
     # Neovim detects Compose files as plain yaml, but docker_language_server
