@@ -134,6 +134,16 @@
       "docker-compose.yml" = "yaml.docker-compose";
     };
 
+    # Neovim sets 'background' from the terminal, so this follows kitty's
+    # light/dark theme. `style` must match kitty's dark theme (default.nix).
+    colorschemes.tokyonight = {
+      enable = true;
+      settings = {
+        style = "night";
+        light_style = "day";
+      };
+    };
+
     # File icons for Telescope; enabling it automatically is deprecated.
     plugins.web-devicons.enable = true;
 
