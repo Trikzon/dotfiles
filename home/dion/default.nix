@@ -8,6 +8,7 @@
   imports = [
     ./git.nix
     ./librewolf.nix
+    ./neovim.nix
     ./shell.nix
   ];
 
@@ -24,12 +25,6 @@
   };
 
   programs.gh.enable = true;
-
-  # defaultEditor sets EDITOR=nvim in the session environment.
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
 
   services.syncthing = {
     enable = true;
