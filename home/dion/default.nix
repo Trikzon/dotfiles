@@ -12,7 +12,15 @@
     ./shell.nix
   ];
 
-  programs.kitty.enable = true;
+  # Kitty switches between these when the system's light/dark setting changes.
+  programs.kitty = {
+    enable = true;
+    autoThemeFiles = {
+      light = "tokyo_night_day";
+      dark = "tokyo_night_night";
+      noPreference = "tokyo_night_night";
+    };
+  };
 
   # Loads a project's flake dev shell when entering its directory. nix-direnv
   # caches it so entering is fast and `nix-collect-garbage` keeps it.
