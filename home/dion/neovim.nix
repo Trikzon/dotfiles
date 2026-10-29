@@ -152,6 +152,8 @@
     # Shows the keys that can follow a prefix such as <space> or g.
     plugins.which-key.enable = true;
 
+    plugins.lualine.enable = true;
+
     # File icons for Telescope; enabling it automatically is deprecated.
     plugins.web-devicons.enable = true;
 
