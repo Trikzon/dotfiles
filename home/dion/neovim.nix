@@ -74,7 +74,16 @@
         enable = true;
         packageFallback = true;
       };
+      jdtls = {
+        enable = true;
+        packageFallback = true;
+      };
     };
+
+    # Starts rust-analyzer itself and adds :RustLsp commands, so rust_analyzer
+    # must not also be enabled in lsp.servers.
+    plugins.rustaceanvim.enable = true;
+    dependencies.rust-analyzer.packageFallback = true;
 
     # Neovim detects Compose files as plain yaml, but docker_language_server
     # only attaches to yaml.docker-compose.
