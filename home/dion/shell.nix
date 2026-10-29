@@ -18,7 +18,22 @@
   };
 
   # Kitty's shell integration is added to .zshrc automatically.
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      # Modules named here are left out of `$all`, which puts the project name
+      # right after the branch instead of at the end of the prompt.
+      format = "$username$hostname$directory$git_branch\${custom.project}$all";
+      custom.project = {
+        # Bare-clone worktrees are named after the branch, so the project name
+        # is the folder that holds `.bare`.
+        when = ''[ "$(basename "$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)")" = .bare ]'';
+        command = ''basename "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")"'';
+        format = "[\\($output\\)]($style) ";
+        style = "bold blue";
+      };
+    };
+  };
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   # Adds the ls, ll, la, and lt aliases for zsh.
