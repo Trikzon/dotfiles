@@ -54,6 +54,7 @@
 
   home.packages = with pkgs; [
     dashboard
+    libreoffice
     mpv
     # Java's AWT needs these, and the wrapper doesn't include them. Without
     # them, GTNH's FalsePatternLib crashes when it opens its download window.
