@@ -55,7 +55,18 @@
   home.packages = with pkgs; [
     dashboard
     mpv
-    prismlauncher
+    # Java's AWT needs these, and the wrapper doesn't include them. Without
+    # them, GTNH's FalsePatternLib crashes when it opens its download window.
+    (prismlauncher.override {
+      additionalLibs = [
+        fontconfig
+        freetype
+        libxi
+        libxrender
+        libxtst
+        zlib
+      ];
+    })
     _7zz
     tree
     unstable.claude-code
