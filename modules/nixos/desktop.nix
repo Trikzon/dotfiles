@@ -17,6 +17,9 @@
   hardware.bluetooth.enable = true;
   services.power-profiles-daemon.enable = true;
 
+  # Nemo needs this for the trash and for mounting USB drives and network shares.
+  services.gvfs.enable = true;
+
   environment.systemPackages = with pkgs; [
     # niri spawns this on demand to run X11 apps.
     xwayland-satellite

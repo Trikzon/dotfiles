@@ -56,6 +56,9 @@
     dashboard
     libreoffice
     mpv
+    # Plain `nemo` ignores extensions. This wrapper loads Linux Mint's default
+    # set, including nemo-fileroller for the Compress/Extract menu entries.
+    nemo-with-extensions
     # Java's AWT needs these, and the wrapper doesn't include them. Without
     # them, GTNH's FalsePatternLib crashes when it opens its download window.
     (prismlauncher.override {
