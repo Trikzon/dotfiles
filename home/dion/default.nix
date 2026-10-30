@@ -53,6 +53,9 @@
   };
 
   home.packages = with pkgs; [
+    # Base theme for Noctalia's GTK templates: Noctalia recolours it and
+    # switches between its light and dark variants with the system theme.
+    adw-gtk3
     dashboard
     libreoffice
     mpv
@@ -128,6 +131,16 @@
         # Claude Code registered this itself; Home Manager now owns the file.
         "x-scheme-handler/claude-cli" = "claude-code-url-handler.desktop";
       };
+  };
+
+  # No icon theme is installed by default, so GTK apps like Nemo fall back to
+  # GTK's few built-in generic icons.
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
   };
 
   # No cursor theme is installed by default, so niri falls back to a large
