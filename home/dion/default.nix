@@ -72,6 +72,8 @@
         libxrender
         libxtst
         zlib
+        # SDL needs it for native Wayland (GTNH sets SDL_VIDEO_DRIVER=wayland).
+        libxkbcommon
       ];
     })
     _7zz
