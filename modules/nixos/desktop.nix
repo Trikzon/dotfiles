@@ -3,6 +3,8 @@
   # Also pulls in gnome-keyring, gcr-ssh-agent (the SSH agent), and
   # pinentry-gnome3 via services.graphical-desktop.
   programs.niri.enable = true;
+  # Nautilus's save dialog fails on Steam's browser downloads; use GTK's.
+  programs.niri.useNautilus = false;
   hardware.graphics.enable = true;
 
   services.pipewire = {
