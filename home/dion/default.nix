@@ -136,6 +136,10 @@
       };
   };
 
+  # Nemo's "Open in Terminal" reads Cinnamon's setting, which defaults to
+  # gnome-terminal.
+  dconf.settings."org/cinnamon/desktop/applications/terminal".exec = "kitty";
+
   # No icon theme is installed by default, so GTK apps like Nemo fall back to
   # GTK's few built-in generic icons.
   gtk = {
