@@ -132,6 +132,7 @@
       // {
         # Claude Code registered this itself; Home Manager now owns the file.
         "x-scheme-handler/claude-cli" = "claude-code-url-handler.desktop";
+        "inode/directory" = "nemo.desktop";
       };
   };
 
