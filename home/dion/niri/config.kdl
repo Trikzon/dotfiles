@@ -11,6 +11,14 @@ input {
     }
 }
 
+// The 4K TV, reached through an HDMI matrix: the EDID names the matrix, not
+// the TV. The ultrawide on the same matrix passes its own EDID through, so it
+// keeps scale 1. Matched by name rather than connector so it follows any port. The
+// double space is real: the EDID model is "MATRIX 4X2 " with a trailing space.
+output "PNP(GSV) MATRIX 4X2  0x00000001" {
+    scale 2
+}
+
 // Ask windows to drop their client-side titlebars; niri draws the border.
 prefer-no-csd
 
